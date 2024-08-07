@@ -5,11 +5,12 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import AppLayout from "./ui/AppLayout";
-import Home from "./pages/Home";
+import AppLayout from "./layouts/AppLayout";
+import Home from "./pages/Feed";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PageNotFound from "./pages/PageNotFound";
+import AuthLayout from "./layouts/AuthLayout";
 
 function App() {
   return (
@@ -20,8 +21,10 @@ function App() {
           <Route path="home" element={<Home />} />
         </Route>
 
-        <Route path="login" element={<Login />} />
-        <Route path="signup" element={<Signup />} />
+        <Route element={<AuthLayout />}>
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<Signup />} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
